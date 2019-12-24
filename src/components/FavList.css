@@ -1,0 +1,7 @@
+#favlist {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(180px, 250px) );
+    justify-content: center;
+    grid-gap: 20px;
+}
