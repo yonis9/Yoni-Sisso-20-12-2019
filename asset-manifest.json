@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Yoni-Sisso-20-12-2019/static/css/main.70adc9a9.chunk.css",
-    "main.js": "/Yoni-Sisso-20-12-2019/static/js/main.a5839afa.chunk.js",
-    "main.js.map": "/Yoni-Sisso-20-12-2019/static/js/main.a5839afa.chunk.js.map",
+    "main.js": "/Yoni-Sisso-20-12-2019/static/js/main.da3a2e75.chunk.js",
+    "main.js.map": "/Yoni-Sisso-20-12-2019/static/js/main.da3a2e75.chunk.js.map",
     "runtime-main.js": "/Yoni-Sisso-20-12-2019/static/js/runtime-main.ff71ef8f.js",
     "runtime-main.js.map": "/Yoni-Sisso-20-12-2019/static/js/runtime-main.ff71ef8f.js.map",
     "static/js/2.ec138101.chunk.js": "/Yoni-Sisso-20-12-2019/static/js/2.ec138101.chunk.js",
     "static/js/2.ec138101.chunk.js.map": "/Yoni-Sisso-20-12-2019/static/js/2.ec138101.chunk.js.map",
     "index.html": "/Yoni-Sisso-20-12-2019/index.html",
-    "precache-manifest.91ed806a498deefae2c50e45e013b1ac.js": "/Yoni-Sisso-20-12-2019/precache-manifest.91ed806a498deefae2c50e45e013b1ac.js",
+    "precache-manifest.f1daaa1da6937004305e2501d7780303.js": "/Yoni-Sisso-20-12-2019/precache-manifest.f1daaa1da6937004305e2501d7780303.js",
     "service-worker.js": "/Yoni-Sisso-20-12-2019/service-worker.js",
     "static/css/main.70adc9a9.chunk.css.map": "/Yoni-Sisso-20-12-2019/static/css/main.70adc9a9.chunk.css.map",
     "static/js/2.ec138101.chunk.js.LICENSE": "/Yoni-Sisso-20-12-2019/static/js/2.ec138101.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ff71ef8f.js",
     "static/js/2.ec138101.chunk.js",
     "static/css/main.70adc9a9.chunk.css",
-    "static/js/main.a5839afa.chunk.js"
+    "static/js/main.da3a2e75.chunk.js"
   ]
 }
