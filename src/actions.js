@@ -31,10 +31,15 @@ export const toggleUnit = (unit) => ({
     payload: unit
 })
 
+export const toggleDayNight = (bool) => ({
+    type: TOGGLE_DAY_NIGHT,
+    payload: bool
+})
+
 export const requestSearchOutput = (text) => (dispatch) => {
    
         dispatch({type: REQUEST_SEARCH_PENDING});
-        fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${text}&language=en-us`)
+        fetch(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${text}&language=en-us`)
         .then(response => response.json())
         .then(data => dispatch({type: REQUEST_SEARCH_SUCCESS, payload: data}))
         .catch(error => dispatch({type: REQUEST_SEARCH_FAILED, payload: error}))
@@ -43,10 +48,10 @@ export const requestSearchOutput = (text) => (dispatch) => {
 
 export const requestForcast = (cityKey, isCelsius) => dispatch => {
     dispatch({type: REQUEST_FORCAST_PENDING});
-    fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}&details=false&metric=${isCelsius}`)
+    fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}&details=false&metric=${isCelsius}`)
     .then(response => response.json())
     .then(fiveDayForcast => {
-      fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}`)
+      fetch(`https://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}`)
       .then(response => response.json())
       .then(currentConditions => dispatch({type: REQUEST_FORCAST_SUCCESS, payload: {fiveDayForcast, currentConditions}}))
     })
@@ -67,7 +72,7 @@ export const getFavoritesData = (favorites) => dispatch => {
         dispatch({type: REQUEST_FAVORITE_DATA_PENDING})
         let arr = []
         for (let i=0; i< favorites.length; i++) {
-          fetch(`http://dataservice.accuweather.com/currentconditions/v1/${favorites[i].Key}?apikey=O2GFMOo9jRKxPEMJ4BbzguAoeTVNAmz1`)
+          fetch(`https://dataservice.accuweather.com/currentconditions/v1/${favorites[i].Key}?apikey=O2GFMOo9jRKxPEMJ4BbzguAoeTVNAmz1`)
           .then(response => response.json())
           .then(data => {
             arr.push({id: favorites[i].Key,
@@ -88,8 +93,3 @@ export const getFavoritesData = (favorites) => dispatch => {
 
     }
 }
-
-export const toggleDayNight = (bool) => ({
-    type: TOGGLE_DAY_NIGHT,
-    payload: bool
-})

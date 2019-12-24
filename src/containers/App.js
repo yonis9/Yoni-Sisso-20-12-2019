@@ -77,7 +77,7 @@ class App extends Component {
    requestGeolocation = (position) => {
      const lat = position.coords.latitude;
      const lon= position.coords.longitude;
-     fetch(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY}&q=${lat},${lon}`)
+     fetch(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY}&q=${lat},${lon}`)
      .then(response=> response.json())
      .then(data => {
        this.props.setLocation(data)
