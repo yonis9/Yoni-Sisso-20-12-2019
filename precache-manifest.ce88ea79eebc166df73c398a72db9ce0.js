@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3c3690a74c3ecba07c79a7152a120be1",
+    "revision": "3691b4023fd191047cfae11f6ef7c6a3",
     "url": "/Yoni-Sisso-20-12-2019/index.html"
   },
   {
-    "revision": "5e8ab65584644454a0e9",
+    "revision": "d8f4fd44db850613ae7a",
     "url": "/Yoni-Sisso-20-12-2019/static/css/main.b0a5316c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js.LICENSE"
   },
   {
-    "revision": "5e8ab65584644454a0e9",
-    "url": "/Yoni-Sisso-20-12-2019/static/js/main.2a194bff.chunk.js"
+    "revision": "d8f4fd44db850613ae7a",
+    "url": "/Yoni-Sisso-20-12-2019/static/js/main.59b8cb5c.chunk.js"
   },
   {
     "revision": "cff0fb05adc24dd528d0",
