@@ -41,6 +41,10 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
+  componentWillMount() {
+    console.log('willmount')
+  }
+
   componentDidMount() {
     this.props.getForcast(this.props.location.Key, this.props.isCelsius);
     this.handleFavorite()
@@ -62,8 +66,10 @@ class App extends Component {
       this.props.getFavoritesData([])
     }
 
-    if(prevProps.route !==this.props.route && this.props.route === 'favorites') {
-            
+    if (prevProps.route !==this.props.route) {
+      this.handleFavorite();
+    }
+    if(prevProps.route !==this.props.route && this.props.route === 'favorites') { 
       this.props.getFavoritesData(JSON.parse(localStorage.getItem('favorites')))
     }
   }
@@ -92,6 +98,9 @@ handleFavorite = () => {
     } else {
       this.props.toggleFavorite(false)
     }
+  } 
+  else {
+    this.props.toggleFavorite(false)
   }
 }
   
@@ -117,22 +126,22 @@ handleFavorite = () => {
 
 
   onFavoriteClick = () => {
-    if (!this.props.isFavorite) {
-      let fav = localStorage.getItem('favorites');
+    let fav = localStorage.getItem('favorites');
+     
       if (!fav) {
         localStorage.setItem('favorites', JSON.stringify([this.props.location]))
-      } else {
+        this.props.toggleFavorite(true)
+      } else if (!Number.isInteger(this.checkIfFavorite(JSON.parse(fav), this.props.location.Key))) {
         fav = JSON.parse(fav);
         fav.push(this.props.location);
         localStorage.setItem('favorites', JSON.stringify(fav))
-      }
-      this.props.toggleFavorite(true)
-    } else {
-      let fav = JSON.parse(localStorage.getItem('favorites'));
-      const i = this.checkIfFavorite(fav, this.props.location.Key);
-      fav.splice(i, 1);
-      localStorage.setItem('favorites', JSON.stringify(fav))
-      this.props.toggleFavorite(false)
+        this.props.toggleFavorite(true)
+      } else {
+        let fav = JSON.parse(localStorage.getItem('favorites'));
+        const i = this.checkIfFavorite(fav, this.props.location.Key);
+        fav.splice(i, 1);
+        localStorage.setItem('favorites', JSON.stringify(fav))
+        this.props.toggleFavorite(false)
     }
 
   }
