@@ -72,7 +72,7 @@ export const getFavoritesData = (favorites) => dispatch => {
         dispatch({type: REQUEST_FAVORITE_DATA_PENDING})
         let arr = []
         for (let i=0; i< favorites.length; i++) {
-          fetch(`https://dataservice.accuweather.com/currentconditions/v1/${favorites[i].Key}?apikey=O2GFMOo9jRKxPEMJ4BbzguAoeTVNAmz1`)
+          fetch(`https://dataservice.accuweather.com/currentconditions/v1/${favorites[i].Key}?apikey=${process.env.REACT_APP_API_KEY}`)
           .then(response => response.json())
           .then(data => {
             arr.push({id: favorites[i].Key,
