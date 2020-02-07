@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Yoni-Sisso-20-12-2019/static/css/main.b0a5316c.chunk.css",
-    "main.js": "/Yoni-Sisso-20-12-2019/static/js/main.fb21c9ac.chunk.js",
-    "main.js.map": "/Yoni-Sisso-20-12-2019/static/js/main.fb21c9ac.chunk.js.map",
+    "main.js": "/Yoni-Sisso-20-12-2019/static/js/main.436caef8.chunk.js",
+    "main.js.map": "/Yoni-Sisso-20-12-2019/static/js/main.436caef8.chunk.js.map",
     "runtime-main.js": "/Yoni-Sisso-20-12-2019/static/js/runtime-main.ff71ef8f.js",
     "runtime-main.js.map": "/Yoni-Sisso-20-12-2019/static/js/runtime-main.ff71ef8f.js.map",
-    "static/js/2.22d450c1.chunk.js": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js",
-    "static/js/2.22d450c1.chunk.js.map": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js.map",
+    "static/js/2.d8bd9040.chunk.js": "/Yoni-Sisso-20-12-2019/static/js/2.d8bd9040.chunk.js",
+    "static/js/2.d8bd9040.chunk.js.map": "/Yoni-Sisso-20-12-2019/static/js/2.d8bd9040.chunk.js.map",
     "index.html": "/Yoni-Sisso-20-12-2019/index.html",
-    "precache-manifest.0d8d34604c8a6ae941c80fec98742a63.js": "/Yoni-Sisso-20-12-2019/precache-manifest.0d8d34604c8a6ae941c80fec98742a63.js",
+    "precache-manifest.a1c70998f592ec64d29d97f4feeb7129.js": "/Yoni-Sisso-20-12-2019/precache-manifest.a1c70998f592ec64d29d97f4feeb7129.js",
     "service-worker.js": "/Yoni-Sisso-20-12-2019/service-worker.js",
     "static/css/main.b0a5316c.chunk.css.map": "/Yoni-Sisso-20-12-2019/static/css/main.b0a5316c.chunk.css.map",
-    "static/js/2.22d450c1.chunk.js.LICENSE": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js.LICENSE"
+    "static/js/2.d8bd9040.chunk.js.LICENSE": "/Yoni-Sisso-20-12-2019/static/js/2.d8bd9040.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.ff71ef8f.js",
-    "static/js/2.22d450c1.chunk.js",
+    "static/js/2.d8bd9040.chunk.js",
     "static/css/main.b0a5316c.chunk.css",
-    "static/js/main.fb21c9ac.chunk.js"
+    "static/js/main.436caef8.chunk.js"
   ]
 }

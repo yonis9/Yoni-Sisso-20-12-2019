@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6c547c2849aa57a4a1ee8a6b46fb8e74",
+    "revision": "2a28af8b314ed21160817e8b2ec222f4",
     "url": "/Yoni-Sisso-20-12-2019/index.html"
   },
   {
-    "revision": "d4d7e0d9a55aef78134b",
+    "revision": "7936e91da331fd61650f",
     "url": "/Yoni-Sisso-20-12-2019/static/css/main.b0a5316c.chunk.css"
   },
   {
-    "revision": "77a825c8dd8f26ff9191",
-    "url": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js"
+    "revision": "909c2ed7cf75656bdc18",
+    "url": "/Yoni-Sisso-20-12-2019/static/js/2.d8bd9040.chunk.js"
   },
   {
     "revision": "b9bc2fc7725df2ce4b7409c91212bc51",
-    "url": "/Yoni-Sisso-20-12-2019/static/js/2.22d450c1.chunk.js.LICENSE"
+    "url": "/Yoni-Sisso-20-12-2019/static/js/2.d8bd9040.chunk.js.LICENSE"
   },
   {
-    "revision": "d4d7e0d9a55aef78134b",
-    "url": "/Yoni-Sisso-20-12-2019/static/js/main.fb21c9ac.chunk.js"
+    "revision": "7936e91da331fd61650f",
+    "url": "/Yoni-Sisso-20-12-2019/static/js/main.436caef8.chunk.js"
   },
   {
     "revision": "cff0fb05adc24dd528d0",

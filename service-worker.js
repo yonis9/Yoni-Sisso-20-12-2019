@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Yoni-Sisso-20-12-2019/precache-manifest.0d8d34604c8a6ae941c80fec98742a63.js"
+  "/Yoni-Sisso-20-12-2019/precache-manifest.a1c70998f592ec64d29d97f4feeb7129.js"
 );
 
 self.addEventListener('message', (event) => {
