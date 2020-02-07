@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 
 import { toggleUnit, requestSearchOutput, setLocation, requestForcast, toggleFavorite, getFavoritesData, setRoute, toggleDayNight } from '../actions.js'
 
-const mapStateToProps = state => {
+const mapStateToprops = state => {
   return {
     isCelsius: state.changeUnit.isCelsius,
     searchOutputs: state.requestSearchOutputs.searchOutputs,
@@ -24,7 +24,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToprops = (dispatch) => {
   return {
     toggleUnit: (bool) => dispatch(toggleUnit(bool)),
     onSearchChange: (e) => dispatch(requestSearchOutput(e.target.value)),
@@ -51,13 +51,13 @@ class App extends Component {
     this.getGeolocation()
   }
 
-  componentDidUpdate(prevProps, prevSate) {
-    if (prevProps.location.Key !== this.props.location.Key) {
+  componentDidUpdate(prevprops, prevSate) {
+    if (prevprops.location.Key !== this.props.location.Key) {
       this.props.getForcast(this.props.location.Key, this.props.isCelsius);
       this.handleFavorite()
     }
 
-    if (prevProps.isCelsius !== this.props.isCelsius) {
+    if (prevprops.isCelsius !== this.props.isCelsius) {
       this.props.getForcast(this.props.location.Key, this.props.isCelsius)
     }
 
@@ -66,10 +66,10 @@ class App extends Component {
       this.props.getFavoritesData([])
     }
 
-    if (prevProps.route !==this.props.route) {
+    if (prevprops.route !==this.props.route) {
       this.handleFavorite();
     }
-    if(prevProps.route !==this.props.route && this.props.route === 'favorites') { 
+    if(prevprops.route !==this.props.route && this.props.route === 'favorites') { 
       this.props.getFavoritesData(JSON.parse(localStorage.getItem('favorites')))
     }
   }
@@ -187,4 +187,4 @@ handleFavorite = () => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToprops, mapDispatchToprops)(App);
