@@ -8,30 +8,22 @@ import Favorites from '../components/Favorites'
 import ErrorBoundry from '../components/ErrorBoundry';
 import Footer from '../components/Footer';
 
-import { toggleUnit, requestSearchOutput, setLocation, requestForcast, toggleFavorite, getFavoritesData, setRoute, toggleDayNight } from '../actions.js'
+import { setLocation, requestForcast, toggleFavorite, setRoute, toggleDayNight } from '../actions.js'
 
 const mapStateToprops = state => {
   return {
-    isCelsius: state.changeUnit.isCelsius,
-    searchOutputs: state.requestSearchOutputs.searchOutputs,
     location: state.changeLocation.location,
-    currentConditions: state.requestForcast.currentConditions,
-    fiveDayForcast: state.requestForcast.fiveDayForcast,
-    isFavorite: state.toggleFavorite.isFavorite,
-    favorites: state.requestFavoritesData.favorites,
     route: state.changeRoute.route,
-    lightBackground: state.toggleDayNight.lightBackground
+    lightBackground: state.toggleDayNight.lightBackground,
+    favorites: state.requestFavoritesData.favorites
   }
 }
 
 const mapDispatchToprops = (dispatch) => {
   return {
-    toggleUnit: (bool) => dispatch(toggleUnit(bool)),
-    onSearchChange: (e) => dispatch(requestSearchOutput(e.target.value)),
+    toggleFavorite: (bool) => dispatch(toggleFavorite(bool)),
     setLocation: (locationKey) => dispatch(setLocation(locationKey)),
     getForcast: (cityKey, isCelsius) => dispatch(requestForcast(cityKey, isCelsius)),
-    toggleFavorite: (bool) => dispatch(toggleFavorite(bool)),
-    getFavoritesData: (favorites) => dispatch(getFavoritesData(favorites)),
     onRouteChange: (route) => dispatch(setRoute(route)),
     toggleDayNight: (bool) => dispatch(toggleDayNight(bool))
   }
@@ -152,7 +144,7 @@ handleFavorite = () => {
   }
 
   render() {
-    const { toggleUnit, isCelsius, searchOutputs, onSearchChange, location, setLocation, fiveDayForcast, currentConditions, isFavorite, favorites, onRouteChange, route } = this.props;
+    const { onRouteChange, route } = this.props;
     return (
       
       <div className="App">
@@ -162,21 +154,10 @@ handleFavorite = () => {
 
   {     route === 'home' ? 
     
-          <Home onSearchChange={onSearchChange}
-                searchOutputs={searchOutputs}
-                setLocation={setLocation}
-                fiveDayForcast={fiveDayForcast}
-                currentConditions={currentConditions}
-                location={location}
-                toggleUnit={toggleUnit}
-                isCelsius={isCelsius}
-                onFavoriteClick={this.onFavoriteClick}
-                isFavorite={isFavorite}/>
+          <Home onFavoriteClick={this.onFavoriteClick} />
                 :
-          <Favorites favorites={favorites}
-                    toggleUnit={toggleUnit}
-                    isCelsius={isCelsius}
-                    onFavCardClick={this.onFavCardClick}/>
+          <Favorites 
+               onFavCardClick={this.onFavCardClick} />
           
           } 
           <Footer />

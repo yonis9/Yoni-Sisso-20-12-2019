@@ -1,4 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { toggleUnit } from '../actions';
+
+
 import FavList from './FavList'
 import './Favorites.css'
 
@@ -16,4 +21,16 @@ const Favorites = ( { favorites, toggleUnit, isCelsius, onFavCardClick }) => {
     )
 }
 
-export default Favorites;
+
+const mapStateToProps = state => ({
+    favorites: state.requestFavoritesData.favorites,
+    isCelsius: state.changeUnit.isCelsius
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    toggleUnit: (bool) => dispatch(toggleUnit(bool)),
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
