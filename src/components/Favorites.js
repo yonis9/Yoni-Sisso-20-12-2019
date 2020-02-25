@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleUnit } from '../actions';
+import { toggleUnit } from '../redux/actions';
 
 
 import FavList from './FavList'

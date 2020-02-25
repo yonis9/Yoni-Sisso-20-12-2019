@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './containers/App';
 
-import { changeUnit, requestSearchOutputs, changeLocation, requestForcast, toggleFavorite, requestFavoritesData, changeRoute, toggleDayNight } from './reducers.js'
+import { changeUnit, requestSearchOutputs, changeLocation, requestForcast, toggleFavorite, requestFavoritesData, changeRoute, toggleDayNight } from './redux/reducers.js/index.js'
 
 import * as serviceWorker from './serviceWorker';
 require('dotenv').config()

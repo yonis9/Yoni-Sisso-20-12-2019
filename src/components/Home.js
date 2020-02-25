@@ -6,7 +6,7 @@ import {
     requestSearchOutput,
     setLocation
 }
-from '../actions';
+from '../redux/actions';
 
 import SearchField from './SearchField'
 import CurrentWeather from './CurrentWeather';

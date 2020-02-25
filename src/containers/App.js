@@ -8,7 +8,7 @@ import Favorites from '../components/Favorites'
 import ErrorBoundry from '../components/ErrorBoundry';
 import Footer from '../components/Footer';
 
-import { setLocation, requestForcast, toggleFavorite, setRoute, toggleDayNight } from '../actions.js'
+import { setLocation, requestForcast, toggleFavorite, setRoute, toggleDayNight } from '../redux/actions.js/index.js'
 
 const mapStateToprops = state => {
   return {
