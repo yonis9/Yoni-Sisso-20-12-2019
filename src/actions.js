@@ -70,26 +70,26 @@ export const getFavoritesData = (favorites) => dispatch => {
         dispatch({type: REQUEST_FAVORITE_DATA_EMPTY, payload: []})
       } else {
         dispatch({type: REQUEST_FAVORITE_DATA_PENDING})
-        let arr = []
-        for (let i=0; i< favorites.length; i++) {
-          fetch(`https://dataservice.accuweather.com/currentconditions/v1/${favorites[i].Key}?apikey=${process.env.REACT_APP_API_KEY}`)
-          .then(response => response.json())
-          .then(data => {
-            arr.push({id: favorites[i].Key,
-                      name: favorites[i].LocalizedName,
-                    country: favorites[i].Country.LocalizedName,
-                    weatherText: data[0].WeatherText,
-                    icon: data[0].WeatherIcon,
-                    temp: data[0].Temperature
-                  })
-                  if (i===favorites.length-1) {
-                    dispatch({type: REQUEST_FAVORITE_DATA_SUCCESS, payload: arr})
-                  }
-          })
+        const promises = favorites.map(
+          f => fetch(`https://dataservice.accuweather.com/currentconditions/v1/${f.Key}?apikey=${process.env.REACT_APP_API_KEY}`)
+          .then(response => response.json()));
+
+           Promise.all(promises)
+          .then(results => {
+            console.log(results)
+            return results.map((data ,i) => ({
+              id: favorites[i].Key,
+              name: favorites[i].LocalizedName,
+              country: favorites[i].Country.LocalizedName,
+              weatherText: data[0].WeatherText,
+              icon: data[0].WeatherIcon,
+              temp: data[0].Temperature
+            })
+            )
+         } )
+          .then(results => dispatch({type: REQUEST_FAVORITE_DATA_SUCCESS, payload: results}))
           .catch(error => dispatch({type: REQUEST_FAVORITE_DATA_FAILED, payload: error}))
-        }
         
       }
-
     }
 }
