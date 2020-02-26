@@ -1,10 +1,15 @@
 import React  from 'react';
-import './SearchField.css';
+import { connect } from 'react-redux';
+
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
+import { getSearchOutput, setLocation } from '../redux/home/home-actions'
 
-const SearchField = ({ onSearchChange, searchOutputs, setLocation }) => {
+
+import './SearchField.css';
+
+const SearchField = ({ getSearchOutput, searchOutputs, setLocation }) => {
 
 
 
@@ -18,7 +23,7 @@ const SearchField = ({ onSearchChange, searchOutputs, setLocation }) => {
         onChange={(event, value) => setLocation(value)}
         style={{ width: '50%' }}
         renderInput={params => (
-            <TextField {...params} label="Choose your location" variant="outlined" fullWidth onChange={onSearchChange}/>
+            <TextField {...params} label="Choose your location" variant="outlined" fullWidth onChange={getSearchOutput}/>
         )}
         />
 
@@ -27,4 +32,13 @@ const SearchField = ({ onSearchChange, searchOutputs, setLocation }) => {
     )
 }
 
-export default SearchField;
+const mapStateToProps = ({ home }) => ({
+    searchOutputs: home.searchOutputs
+})
+
+const mapDispatchToProps = dispatch => ({
+    getSearchOutput: (e) => dispatch(getSearchOutput(e.target.value)),
+    setLocation: (location) => dispatch(setLocation(location))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

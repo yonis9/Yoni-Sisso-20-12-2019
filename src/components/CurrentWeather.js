@@ -1,10 +1,18 @@
-import React from 'react';
-import './CurrentWeather.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { getForcast } from '../redux/home/home-actions';
+
 import DayList from  './DayList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-const CurrentWeather = ({ currentConditions,fiveDayForcast, location, toggleUnit, isCelsius, onFavoriteClick, isFavorite }) => {
+import './CurrentWeather.css';
+
+
+const CurrentWeather = ({getForcast, weather, location, isCelsius, onFavoriteClick,toggleUnit, isFavorite }) => {
+   
+   const { currentConditions, fiveDayForcast } = weather;
     let style;
     isFavorite ? style = {opacity: 1,} : style = {opacity: 0.4};
 
@@ -14,7 +22,11 @@ if (icon) {
     icon.toString().length < 2 ? icon = '0'+icon : icon = icon;
 }
 
-
+    useEffect(() => {
+        getForcast(location.Key)
+    },[location])
+    
+    
     return (
    currentConditions.length ?   
      <div id='CurrentWeather-con'>
@@ -27,7 +39,6 @@ if (icon) {
                         <h3  className='toggle-unit'onClick={()=>toggleUnit(!isCelsius)}>{isCelsius ? 'C' : 'F'}</h3>
                     </div>
              </div>
-            
             <img alt='icon' src={`https://developer.accuweather.com/sites/default/files/${icon}-s.png`} />
             <h1>{currentConditions[0].WeatherText}</h1>
             {isCelsius ?
@@ -40,9 +51,19 @@ if (icon) {
                 <DayList fiveDayForcast={fiveDayForcast} />
             </div>
 
-        </div> : <h1>loading</h1>
+        </div> 
+        : <h1>loading</h1>
     
     )
 }
 
-export default CurrentWeather;
+const mapStateToProps = ({ home }) => ({
+    location: home.location,
+    weather: home.weather
+})
+
+const mapDispatchToProps = dispatch => ({
+    getForcast: (locationKey) => dispatch(getForcast(locationKey))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeather);

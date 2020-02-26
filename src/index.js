@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware, combineReducers} from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
+
 import './index.css';
 import App from './containers/App';
 
-import { changeUnit, requestSearchOutputs, changeLocation, requestForcast, toggleFavorite, requestFavoritesData, changeRoute, toggleDayNight } from './redux/reducers.js/index.js'
+import { store } from './redux/store';
 
 import * as serviceWorker from './serviceWorker';
 require('dotenv').config()
 
 
-const rootReducer = combineReducers({ changeUnit, requestSearchOutputs, changeLocation, requestForcast, toggleFavorite, requestFavoritesData, changeRoute, toggleDayNight })
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(<Provider store={store}>
                     <App />
