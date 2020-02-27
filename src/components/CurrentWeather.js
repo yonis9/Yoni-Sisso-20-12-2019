@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { getForcast } from '../redux/home/home-actions';
+import { toggleFavorite } from '../redux/favorites/favorites-actions'
 
+import ToggleUnit from './ToggleUnit'
 import DayList from  './DayList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -10,21 +12,18 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import './CurrentWeather.css';
 
 
-const CurrentWeather = ({getForcast, weather, location, isCelsius, onFavoriteClick,toggleUnit, isFavorite }) => {
+const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorite, isFavorite }) => {
    
    const { currentConditions, fiveDayForcast } = weather;
-    let style;
-    isFavorite ? style = {opacity: 1,} : style = {opacity: 0.4};
-
-let icon;
-currentConditions.length ? icon =  currentConditions[0].WeatherIcon : icon = null;
-if (icon) {
-    icon.toString().length < 2 ? icon = '0'+icon : icon = icon;
-}
+    let icon;
+    currentConditions.length ? icon =  currentConditions[0].WeatherIcon : icon = null;
+    if (icon) {
+        icon.toString().length < 2 ? icon = '0'+icon : icon = icon;
+    }
 
     useEffect(() => {
-        getForcast(location.Key)
-    },[location])
+        getForcast(location.Key, isCelsius)
+    },[location.Key, isCelsius, getForcast])
     
     
     return (
@@ -33,10 +32,10 @@ if (icon) {
             <div id='header'>
                     <h3>{location.LocalizedName}, {location.Country.LocalizedName}</h3>
                     <div id='right-box-header'>
-                        <div onClick={onFavoriteClick}>
-                            <FontAwesomeIcon icon={faStar} size="2x" style={style} className="highlight"  />
+                        <div onClick={() => toggleFavorite(location)}>
+                            <FontAwesomeIcon icon={faStar} size="2x" className={`${isFavorite ? 'star favorite' : 'star'}`}  />
                         </div>
-                        <h3  className='toggle-unit'onClick={()=>toggleUnit(!isCelsius)}>{isCelsius ? 'C' : 'F'}</h3>
+                        <ToggleUnit />
                     </div>
              </div>
             <img alt='icon' src={`https://developer.accuweather.com/sites/default/files/${icon}-s.png`} />
@@ -57,13 +56,15 @@ if (icon) {
     )
 }
 
-const mapStateToProps = ({ home }) => ({
+const mapStateToProps = ({ home, app }) => ({
     location: home.location,
-    weather: home.weather
-})
+    weather: home.weather,
+    isFavorite: home.isFavorite,
+    isCelsius: app.isCelsius})
 
 const mapDispatchToProps = dispatch => ({
-    getForcast: (locationKey) => dispatch(getForcast(locationKey))
+    getForcast: (locationObj, isCelsius) => dispatch(getForcast(locationObj, isCelsius)),
+    toggleFavorite: (locationObj) => dispatch(toggleFavorite(locationObj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeather);

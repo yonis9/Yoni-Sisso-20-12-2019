@@ -33,12 +33,17 @@
     height: 30px;
 }
 
-.highlight {
+.star {
+    opacity: 0.4;
     color: #ffe100;
     transition: 0.5s;
 }
 
-.highlight:hover {
+.favorite {
+    opacity: 1;
+}
+
+.star :hover {
     cursor: pointer;
 }
 

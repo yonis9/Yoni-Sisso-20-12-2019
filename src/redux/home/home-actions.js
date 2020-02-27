@@ -29,7 +29,7 @@ export const getForcast = (cityKey, isCelsius) => dispatch => {
       .then(response => response.json())
       .then(currentConditions => dispatch({ 
           type: homeActionTypes.REQUEST_FORCAST_SUCCESS,
-           payload:{ weather: { fiveDayForcast, currentConditions } }
+           payload:{ fiveDayForcast, currentConditions }
         })
         )
     })
