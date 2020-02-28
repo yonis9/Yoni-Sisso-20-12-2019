@@ -118,23 +118,21 @@ class App extends Component {
 //   }
 
   render() {
-    const { onRouteChange, route } = this.props;
+    const { route } = this.props;
     return (
       
       <div className="App">
-        <NavBar onRouteChange={onRouteChange}/>
+        <NavBar />
         <ErrorBoundry>
         <ToggleDayNight onButtonClick={this.onButtonClick}/>
-        <Home onFavoriteClick={this.onFavoriteClick} />
-{/* 
-  {     route === 'home' ? 
+        {     
+        route === 'home' ? 
     
-          <Home onFavoriteClick={this.onFavoriteClick} />
-                :
-          <Favorites 
-               onFavCardClick={this.onFavCardClick} />
+          <Home />
+          :
+          <Favorites />
           
-          }  */}
+        } 
           <Footer />
         </ErrorBoundry>
       </div>
@@ -143,9 +141,9 @@ class App extends Component {
 }
 
 
-const mapStateToprops = state => {
+const mapStateToprops = ({ app }) => {
   return {
-    location: state.home.location
+    route: app.route
   }
 }
 

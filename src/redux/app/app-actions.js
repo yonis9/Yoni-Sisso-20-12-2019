@@ -7,3 +7,8 @@ export const toggleUnit = () => ({
 export const togglDayNight = () => ({
     type: appActionTypes.TOGGLE_DAY_NIGHT
 })
+
+export const changeRoute = (route) => ({
+    type: appActionTypes.CHANGE_ROUTE,
+    payload: route
+})

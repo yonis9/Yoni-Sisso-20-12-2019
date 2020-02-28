@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import FavCard from './FavCard';
 import './FavList.css'
 
-const FavList = ({ favorites, isCelsius, onFavCardClick }) => {
+const FavList = ({ favoritesWeather, isCelsius, onFavCardClick }) => {
     return (
         <div id='favlist'>
-            { favorites.map(city => {
+            { favoritesWeather.map(city => {
                 return (
                     <FavCard id={city.id}
                              key={city.id}
@@ -24,4 +26,8 @@ const FavList = ({ favorites, isCelsius, onFavCardClick }) => {
     )
 }
 
-export default FavList;
+const mapStateToProps = ({ favorites }) => ({
+    favoritesWeather: favorites.favoritesWeather
+})
+
+export default connect(mapStateToProps)(FavList);

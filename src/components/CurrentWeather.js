@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 
 import { getForcast } from '../redux/home/home-actions';
 import { toggleFavorite } from '../redux/favorites/favorites-actions'
+import { isFavoriteSelector, locationSelector } from '../redux/favorites/favorites-selectors'
 
 import ToggleUnit from './ToggleUnit'
+import ToggleFavorite from './ToggleFavorite';
 import DayList from  './DayList';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 import './CurrentWeather.css';
 
 
 const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorite, isFavorite }) => {
+    console.log(isFavorite)
    
    const { currentConditions, fiveDayForcast } = weather;
     let icon;
@@ -32,9 +33,7 @@ const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorit
             <div id='header'>
                     <h3>{location.LocalizedName}, {location.Country.LocalizedName}</h3>
                     <div id='right-box-header'>
-                        <div onClick={() => toggleFavorite(location)}>
-                            <FontAwesomeIcon icon={faStar} size="2x" className={`${isFavorite ? 'star favorite' : 'star'}`}  />
-                        </div>
+                        <ToggleFavorite />
                         <ToggleUnit />
                     </div>
              </div>
@@ -56,11 +55,12 @@ const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorit
     )
 }
 
-const mapStateToProps = ({ home, app }) => ({
-    location: home.location,
-    weather: home.weather,
-    isFavorite: home.isFavorite,
-    isCelsius: app.isCelsius})
+const mapStateToProps = (state) => ({
+    location: locationSelector(state),
+    weather: state.home.weather,
+    isFavorite: Boolean(state.favorites.favorites.find(f => f.Key === state.home.location.Key)),
+    isCelsius: state.app.isCelsius
+})
 
 const mapDispatchToProps = dispatch => ({
     getForcast: (locationObj, isCelsius) => dispatch(getForcast(locationObj, isCelsius)),

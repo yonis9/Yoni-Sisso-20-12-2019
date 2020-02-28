@@ -1,16 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import './NavBar.css'
 
-const NavBar = ( { onRouteChange }) => {
+import { changeRoute } from '../redux/app/app-actions';
+
+const NavBar = ( { changeRoute }) => {
     return (
         <nav>
             <h3>Herolo Weather Task</h3>
             <ul>
-                <li onClick={()=> onRouteChange('home')}>HOME</li>
-                <li onClick={()=> onRouteChange('favorites')}>FAVORITES</li>
+                <li onClick={()=> changeRoute('home')}>HOME</li>
+                <li onClick={()=> changeRoute('favorites')}>FAVORITES</li>
             </ul>
         </nav>
     )
 }
 
-export default NavBar;
+const mapDispatchToProps = disptach => ({
+    changeRoute: (route) => disptach(changeRoute(route))
+})
+
+export default connect(null, mapDispatchToProps)(NavBar);
