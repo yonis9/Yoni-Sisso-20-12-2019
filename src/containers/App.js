@@ -53,12 +53,11 @@ const App = ({ route, lightBackground, setLocation }) => {
       <ErrorBoundry>
       <ToggleDayNight />
       {     
-      route === 'home' ? 
-  
+        route === 'home' 
+        ? 
         <Home />
         :
         <Favorites />
-        
       } 
         <Footer />
       </ErrorBoundry>
