@@ -1,5 +1,5 @@
 import React from 'react';
-import './DayCard.css'
+import '../DayCard/DayCard.css'
 
 const DayCard = ({ day, date, minTemp, maxTemp, tempUnit, icon}) => {
     icon.toString().length < 2 ? icon = '0'+icon : icon = icon;

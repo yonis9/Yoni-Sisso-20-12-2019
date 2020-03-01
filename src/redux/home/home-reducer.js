@@ -3,7 +3,6 @@ import DEFAULT_LOCATION from './location-data';
 
 const INITIAL_STATE = {
     location: DEFAULT_LOCATION,
-    isFavorite: false,
     searchOutputs: [],
     isPending: false,
     error: null,
@@ -18,9 +17,6 @@ const homeReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case homeActionTypes.CHANGE_LOCATION:
             return { ...state, location: action.payload }
-
-        case homeActionTypes.TOGGLE_FAVORITE:
-            return { ...state, isFavorite: !state.isFavorite }
 
         case homeActionTypes.REQUEST_SEARCH_START:
             return { ...state, isPending: true }

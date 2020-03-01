@@ -1,5 +1,5 @@
 import React from 'react';
-import DayCard from './DayCard';
+import DayCard from '../DayCard/DayCard';
 import './DayList.css';
 
 const DayList = ({ fiveDayForcast }) => {

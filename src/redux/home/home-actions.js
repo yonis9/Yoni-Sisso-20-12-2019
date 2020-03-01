@@ -5,11 +5,6 @@ export const setLocation = (location) => ({
     payload: location
 })
 
-export const toggleFavorite = () => ({
-    type: homeActionTypes.TOGGLE_FAVORITE
-})
-
-
 export const getSearchOutput = (text) => (dispatch) => {
    
     dispatch({type: homeActionTypes.REQUEST_SEARCH_START});
@@ -21,7 +16,7 @@ export const getSearchOutput = (text) => (dispatch) => {
 
 
 export const getForcast = (cityKey, isCelsius) => dispatch => {
-    dispatch({type: homeActionTypes.REQUEST_FORCAST_START});
+    dispatch({ type: homeActionTypes.REQUEST_FORCAST_START });
     fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityKey}?apikey=${process.env.REACT_APP_API_KEY}&details=false&metric=${isCelsius}`)
     .then(response => response.json())
     .then(fiveDayForcast => {

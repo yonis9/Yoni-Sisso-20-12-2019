@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FavCard from './FavCard';
+import FavCard from '../FavCard/FavCard';
 import './FavList.css'
 
 const FavList = ({ favoritesWeather, isCelsius, onFavCardClick }) => {

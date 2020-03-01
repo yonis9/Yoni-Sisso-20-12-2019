@@ -1,16 +1,16 @@
 import { createSelector } from 'reselect'
+
+import { selectLocation } from '../home/home-selectors'
  
-export const favoritesSelector = state => state.favorites.favorites;
-export const locationSelector = state => state.home.location.Key;
-export const favoritesWeatherSelector = state => state.shop.favoritesWeather;
+export const selectFavorites = state => state.favorites.favorites;
  
 
-export const isFavoriteSelector = createSelector(
-    [favoritesSelector, locationSelector],
-    (favorites, location) => { 
-        console.log(favorites)
-        console.log(location)
-        
-       return Boolean(favorites.find(f => f.Key === location))
-    }
+export const selectIsFavorite = createSelector(
+    [selectFavorites, selectLocation],
+    (favorites, location) => Boolean(favorites.find(f => f.Key === location.Key))
+)
+
+export const selectFavoritesWeather = createSelector(
+    selectFavorites,
+    favorites => favorites.favoritesWeather
 )

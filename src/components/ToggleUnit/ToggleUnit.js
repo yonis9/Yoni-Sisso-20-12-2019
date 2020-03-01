@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { toggleUnit } from '../redux/app/app-actions';
+import { toggleUnit } from '../../redux/app/app-actions';
 
 const ToggleUnit = ({ isCelsius, toggleUnit }) => (
     <h3  className='toggle-unit'onClick={toggleUnit}>

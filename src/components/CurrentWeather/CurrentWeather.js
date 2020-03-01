@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getForcast } from '../redux/home/home-actions';
-import { toggleFavorite } from '../redux/favorites/favorites-actions'
-import { isFavoriteSelector, locationSelector } from '../redux/favorites/favorites-selectors'
+import { getForcast } from '../../redux/home/home-actions';
+import { selectFavorites } from '../../redux/favorites/favorites-selectors';
+import { selectLocation, selectWeather } from '../../redux/home/home-selectors';
+import { selectIsCelsius } from '../../redux/app/app-selectors';
 
-import ToggleUnit from './ToggleUnit'
-import ToggleFavorite from './ToggleFavorite';
-import DayList from  './DayList';
+import ToggleUnit from '../ToggleUnit/ToggleUnit'
+import ToggleFavorite from '../ToggleFavorite/ToggleFavorite';
+import DayList from  '../DayList/DayList';
 
 import './CurrentWeather.css';
 
 
-const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorite, isFavorite }) => {
-    console.log(isFavorite)
-   
+const CurrentWeather = ({getForcast, weather, location, isCelsius, favorites }) => {
    const { currentConditions, fiveDayForcast } = weather;
     let icon;
     currentConditions.length ? icon =  currentConditions[0].WeatherIcon : icon = null;
@@ -24,7 +23,7 @@ const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorit
 
     useEffect(() => {
         getForcast(location.Key, isCelsius)
-    },[location.Key, isCelsius, getForcast])
+    },[location.Key, isCelsius, getForcast, favorites])
     
     
     return (
@@ -56,15 +55,14 @@ const CurrentWeather = ({getForcast, weather, location, isCelsius, toggleFavorit
 }
 
 const mapStateToProps = (state) => ({
-    location: locationSelector(state),
-    weather: state.home.weather,
-    isFavorite: Boolean(state.favorites.favorites.find(f => f.Key === state.home.location.Key)),
-    isCelsius: state.app.isCelsius
+    favorites: selectFavorites(state),
+    location: selectLocation(state),
+    weather: selectWeather(state),
+    isCelsius: selectIsCelsius(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-    getForcast: (locationObj, isCelsius) => dispatch(getForcast(locationObj, isCelsius)),
-    toggleFavorite: (locationObj) => dispatch(toggleFavorite(locationObj))
+    getForcast: (locationObj, isCelsius) => dispatch(getForcast(locationObj, isCelsius))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentWeather);

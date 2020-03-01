@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { favoritesSelector } from '../redux/favorites/favorites-selectors'
-import { getFavoritesWeather } from '../redux/favorites/favorites-actions';
+import { selectFavorites } from '../../redux/favorites/favorites-selectors'
+import { getFavoritesWeather } from '../../redux/favorites/favorites-actions';
+import { selectIsCelsius } from '../../redux/app/app-selectors'
 
-import ToggleUnit from './ToggleUnit'
+import ToggleUnit from '../ToggleUnit/ToggleUnit'
 
-import FavList from './FavList'
+import FavList from '../FavList/FavList'
 import './Favorites.css'
 
-const Favorites = ( { favorites, getFavoritesWeather }) => {
-    
+const Favorites = ( { favorites, getFavoritesWeather, isCelsius }) => {
     useEffect(() => {
         getFavoritesWeather(favorites)
-    }, [])
+    }, [getFavoritesWeather, favorites])
 
     return (
         <div>
@@ -35,8 +35,8 @@ const Favorites = ( { favorites, getFavoritesWeather }) => {
 
 
 const mapStateToProps = (state) => ({
-    favorites: favoritesSelector(state),
-    isCelsius: state.app.isCelsius
+    favorites: selectFavorites(state),
+    isCelsius: selectIsCelsius(state)
 })
 
 const mapDispatchToProps = dispatch => ({

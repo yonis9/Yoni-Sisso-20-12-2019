@@ -4,4 +4,6 @@
     justify-content: center;
 }
 
-
+.MuiAutocomplete-root {
+    color: white
+}

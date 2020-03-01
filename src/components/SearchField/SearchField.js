@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
-import { getSearchOutput, setLocation } from '../redux/home/home-actions'
+import { getSearchOutput, setLocation } from '../../redux/home/home-actions'
 
 
 import './SearchField.css';

@@ -1,10 +1,10 @@
 import appActionTypes from './app-types'
 
 export const toggleUnit = () => ({
-    type: appActionTypes.TOGGLE_UNIT,
+    type: appActionTypes.TOGGLE_UNIT
 })
 
-export const togglDayNight = () => ({
+export const toggleDayNight = () => ({
     type: appActionTypes.TOGGLE_DAY_NIGHT
 })
 

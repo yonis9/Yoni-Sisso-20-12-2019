@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import './NavBar.css'
 
-import { changeRoute } from '../redux/app/app-actions';
+import { changeRoute } from '../../redux/app/app-actions';
 
 const NavBar = ( { changeRoute }) => {
     return (
         <nav>
-            <h3>Herolo Weather Task</h3>
+            <h3>Weather App</h3>
             <ul>
                 <li onClick={()=> changeRoute('home')}>HOME</li>
                 <li onClick={()=> changeRoute('favorites')}>FAVORITES</li>

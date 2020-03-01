@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleFavorite } from '../redux/favorites/favorites-actions'
-import { isFavoriteSelector } from '../redux/favorites/favorites-selectors'
+import { toggleFavorite } from '../../redux/favorites/favorites-actions'
+import { selectIsFavorite } from '../../redux/favorites/favorites-selectors';
+import { selectLocation } from '../../redux/home/home-selectors'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -18,8 +19,8 @@ const ToggleFavorite = ({ toggleFavorite, isFavorite, location }) => (
 )
 
 const mapStateToProps = state => ({
-    location: state.home.location,
-    isFavorite: isFavoriteSelector(state),
+    location: selectLocation(state),
+    isFavorite: selectIsFavorite(state),
 })
 
 const mapDispatchToProps = dispatch => ({
