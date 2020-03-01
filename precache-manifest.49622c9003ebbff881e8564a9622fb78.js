@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4071aad7e515589bebe67a4bec1352b1",
+    "revision": "9d2606ff83040785d6dbb17727dbc588",
     "url": "/Yoni-Sisso-20-12-2019/index.html"
   },
   {
