@@ -16,3 +16,8 @@ export const selectWeather = createSelector(
     selectHome,
     home => home.weather
 )
+
+export const selectError = createSelector(
+    selectHome,
+    home => home.error
+)

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect} from 'react-redux'
 
 import { selectRoute, selectLightBackground } from '../redux/app/app-selectors';
+import { selectError } from '../redux/home/home-selectors'
 import { setLocation } from '../redux/home/home-actions'
 
 import NavBar from '../components/NavBar/NavBar';
@@ -13,7 +14,13 @@ import Footer from '../components/Footer/Footer';
 
 import './App.css';
 
-const App = ({ route, lightBackground, setLocation }) => {
+const App = ({ route, lightBackground, setLocation, error }) => {
+
+  useEffect(() =>{
+    if (error) {
+      alert("We are sorry, the app's allowed number of forcast requests has been exceeded")
+    }
+  }, [error])
 
   useEffect(() => {
     if(lightBackground) {
@@ -44,6 +51,7 @@ const App = ({ route, lightBackground, setLocation }) => {
      .then(data => {
        setLocation(data)
      })
+     .catch(error => console.log(error))
   }
 
   return (
@@ -69,7 +77,8 @@ const App = ({ route, lightBackground, setLocation }) => {
 
 const mapStateToprops = (state) => ({
     route: selectRoute(state),
-    lightBackground: selectLightBackground(state)
+    lightBackground: selectLightBackground(state),
+    error: selectError(state)
 })
 
 const mapDispatchToProps = dispatch => ({

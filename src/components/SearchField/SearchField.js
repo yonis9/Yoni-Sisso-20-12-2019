@@ -23,7 +23,13 @@ const SearchField = ({ getSearchOutput, searchOutputs, setLocation }) => {
         onChange={(event, value) => setLocation(value)}
         style={{ width: '50%' }}
         renderInput={params => (
-            <TextField {...params} label="Choose your location" variant="outlined" fullWidth onChange={getSearchOutput}/>
+            <TextField {...params}
+            label="Choose your location"
+            variant="outlined"
+            fullWidth 
+            onChange={(e) => e.target.value.length > 2 ?
+                 getSearchOutput(e.target.value)
+                    : null}/>
         )}
         />
 
@@ -37,7 +43,7 @@ const mapStateToProps = ({ home }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getSearchOutput: (e) => dispatch(getSearchOutput(e.target.value)),
+    getSearchOutput: (text) => dispatch(getSearchOutput(text)),
     setLocation: (location) => dispatch(setLocation(location))
 })
 

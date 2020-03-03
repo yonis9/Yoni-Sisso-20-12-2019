@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     location: DEFAULT_LOCATION,
     searchOutputs: [],
     isPending: false,
-    error: null,
+    error: false,
     weather: {
         fiveDayForcast: {},
         currentConditions: []
@@ -26,14 +26,14 @@ const homeReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 searchOutputs: action.payload,
                 isPending: false,
-                error: null
+                error: false
             }
 
         case homeActionTypes.REQUEST_SEARCH_FAILED:
             return { 
                 ...state,
                 isPending: false,
-                error: action.payload
+                error: true
             }
 
         case homeActionTypes.REQUEST_FORCAST_START:
@@ -44,7 +44,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 weather: action.payload ,
                 isPending: false,
-                error: null
+                error: false
 
             }
         default:

@@ -28,5 +28,5 @@ export const getForcast = (cityKey, isCelsius) => dispatch => {
         })
         )
     })
-    .catch(error => dispatch({type: homeActionTypes.REQUEST_FORCAST_FAILED, payload: error}))
+    .catch(error => dispatch({type: homeActionTypes.REQUEST_FORCAST_FAILED, payload: true}))
 }
