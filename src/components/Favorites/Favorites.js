@@ -27,7 +27,7 @@ const Favorites = ( { favorites, getFavoritesWeather, isCelsius }) => {
                     <FavList/>
                 </div>
                 :
-                <h1>You have no favorites places yet</h1>
+                <h1 className='no-favs'>You have no favorites places yet</h1>
             }
         </div>
     )

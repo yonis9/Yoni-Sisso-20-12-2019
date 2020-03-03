@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
 body {
-
   background-color: #f2f2f2;
   color: #333;
   transition: 0.5s;
@@ -9,9 +8,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  body {
-    padding-bottom: 30rem;
-  }
+  
 }
 
 
