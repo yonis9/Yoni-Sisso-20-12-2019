@@ -9,9 +9,17 @@ import { getSearchOutput, setLocation } from '../../redux/home/home-actions'
 
 import './SearchField.css';
 
+const style = { 
+    width: '50%',
+    backgroundColor: '#f2f2f2f2',
+    padding: '20px',
+    border: '1px solid #bfbfbf',
+    borderRadius: '5px'
+}
+
 const SearchField = ({ getSearchOutput, searchOutputs, setLocation }) => {
 
-
+    
 
     return (
         <div id='search-con'>
@@ -21,7 +29,7 @@ const SearchField = ({ getSearchOutput, searchOutputs, setLocation }) => {
         options={searchOutputs}
         getOptionLabel={option => option.LocalizedName +', ' +option.Country.LocalizedName}
         onChange={(event, value) => setLocation(value)}
-        style={{ width: '50%' }}
+        style={style}
         renderInput={params => (
             <TextField {...params}
             label="Choose your location"
