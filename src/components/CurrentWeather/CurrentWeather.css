@@ -63,3 +63,7 @@
 .toggle-unit {
     cursor: pointer;
 }
+
+.loading {
+    padding-bottom: 250px;
+}
